@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Sage - Start Your IT Journey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a52 0%, #2c5364 100%);
+            color: white;
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: #e8dcc4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #e8dcc4;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3a52 0%, #2c5364 100%);
+            color: white;
+            padding: 150px 5% 100px;
+            margin-top: 120px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #e8dcc4;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #e8dcc4;
+            color: #1e3a52;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            animation: fadeInUp 1s 0.6s backwards;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .services {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e3a52;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .portfolio-divider {
+            margin: 4rem 0 2rem;
+            padding-top: 3rem;
+            border-top: 2px solid #e8dcc4;
+        }
+
+        .portfolio-divider h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #1e3a52;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-divider p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2.5rem;
+        }
+
+        .portfolio-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 80px;
+        }
+
+        .portfolio-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid #e8dcc4;
+            transition: all 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-card .service-icon {
+            font-size: 3.5rem;
+        }
+
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .opportunity-card {
+            background: #f8f9fa;
+            border-left: 4px solid #1e3a52;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .opportunity-card:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .opportunity-card h4 {
+            color: #1e3a52;
+            margin-bottom: 0.5rem;
+        }
+
+        .opportunity-tag {
+            display: inline-block;
+            background: #e8dcc4;
+            color: #1e3a52;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+        }
+
+        .dual-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .audience-bar {
+            background: #152a3d;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border-bottom: 1px solid rgba(232, 220, 196, 0.2);
+        }
+
+        .audience-tab {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .audience-tab:hover {
+            color: #e8dcc4;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .audience-tab.active {
+            color: #e8dcc4;
+            border-bottom-color: #e8dcc4;
+            background: rgba(232, 220, 196, 0.08);
+        }
+
+        .audience-split {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: -40px auto 0;
+            padding: 0 5% 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .audience-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-top: 5px solid #1e3a52;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+        }
+
+        .audience-card.org-card {
+            border-top-color: #e8dcc4;
+        }
+
+        .audience-card h2 {
+            color: #1e3a52;
+            margin: 1rem 0;
+            font-size: 1.6rem;
+        }
+
+        .audience-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .audience-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .audience-card ul li {
+            padding: 0.4rem 0;
+            color: #444;
+        }
+
+        .audience-card ul li::before {
+            content: "→ ";
+            color: #1e3a52;
+            font-weight: bold;
+        }
+
+        .hub-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .hub-action-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .hub-action-card:hover {
+            border-color: #e8dcc4;
+            transform: translateY(-4px);
+        }
+
+        .hub-action-card .hub-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hub-action-card h4 {
+            color: #1e3a52;
+            margin-bottom: 0.5rem;
+        }
+
+        .hub-action-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .file-upload {
+            border: 2px dashed #e8dcc4;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            background: #fafafa;
+            transition: border-color 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: #1e3a52;
+        }
+
+        .file-upload input[type="file"] {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .file-hint {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 4px solid #1e3a52;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #1e3a52;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #1e3a52;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-link:hover {
+            color: #2c5364;
+            transform: translateX(5px);
+        }
+
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #1e3a52 0%, #2c5364 100%);
+            color: white;
+            padding: 120px 5% 60px;
+            margin-top: 120px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-detail {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .service-detail h2 {
+            color: #1e3a52;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-detail ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+
+        .service-detail li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .enroll-box {
+            background: linear-gradient(135deg, #1e3a52 0%, #2c5364 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .enroll-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #e8dcc4;
+            color: #1e3a52;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .enroll-button:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info, .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3, .contact-form h3 {
+            color: #1e3a52;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e3a52;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e8dcc4;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1e3a52;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: #1e3a52;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #2c5364;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            background: #1e3a52;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+
+        footer {
+            background: #1e3a52;
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #e8dcc4;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-section a:hover {
+            color: #e8dcc4;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(232, 220, 196, 0.3);
+        }
+
+        .footer-bottom a {
+            color: #e8dcc4;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 120px;
+                flex-direction: column;
+                background: #1e3a52;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.3rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="audience-bar">
+            <a class="audience-tab" id="tab-job-seekers" onclick="showPage('job-seekers')">For Job Seekers</a>
+            <a class="audience-tab" id="tab-organizations" onclick="showPage('organizations')">For Organizations</a>
+        </div>
+        <nav>
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 10 L170 40 L170 100 Q170 160 100 210 Q30 160 30 100 L30 40 Z" 
+                              fill="none" stroke="#1e3a52" stroke-width="8"/>
+                        <path d="M100 25 L155 50 L155 100 Q155 150 100 190 Q45 150 45 100 L45 50 Z" 
+                              fill="#1e3a52"/>
+                        <rect x="70" y="60" width="60" height="4" fill="#e8dcc4"/>
+                        <path d="M65 60 L100 45 L135 60 L100 75 Z" fill="#e8dcc4"/>
+                        <path d="M132 62 L135 80 L138 80 L135 62 Z" fill="#e8dcc4"/>
+                        <ellipse cx="85" cy="95" rx="12" ry="10" fill="none" stroke="#e8dcc4" stroke-width="3"/>
+                        <ellipse cx="115" cy="95" rx="12" ry="10" fill="none" stroke="#e8dcc4" stroke-width="3"/>
+                        <line x1="97" y1="95" x2="103" y2="95" stroke="#e8dcc4" stroke-width="3"/>
+                        <line x1="73" y1="95" x2="68" y2="92" stroke="#e8dcc4" stroke-width="3"/>
+                        <line x1="127" y1="95" x2="132" y2="92" stroke="#e8dcc4" stroke-width="3"/>
+                        <path d="M75 105 Q75 125 100 130 Q125 125 125 105" fill="#e8dcc4"/>
+                        <path d="M80 110 Q85 120 100 122 Q115 120 120 110" fill="#1e3a52" opacity="0.3"/>
+                        <path d="M85 105 Q90 108 100 106 Q110 108 115 105" 
+                              fill="#e8dcc4" stroke="#e8dcc4" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>Secure Sage</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('services')">Training Services</a></li>
+                <li><a onclick="showPage('job-seekers')">Job Seekers</a></li>
+                <li><a onclick="showPage('organizations')">Organizations</a></li>
+                <li><a onclick="showPage('about')">About</a></li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page-content active">
+        <section class="hero">
+            <h1>Secure Sage</h1>
+            <p class="tagline">Your partner in training, recruitment & workforce solutions</p>
+            <p>Connecting skilled IT professionals with organizations — through expert training and trusted talent placement</p>
+        </section>
+        <section class="audience-split">
+            <div class="audience-card" onclick="showPage('job-seekers')">
+                <div class="service-icon">🎓</div>
+                <h2>For Job Seekers</h2>
+                <p>Students and professionals — find opportunities, upload your CV, and grow your IT career with us.</p>
+                <ul>
+                    <li>Upload your resume & join our talent pool</li>
+                    <li>Browse open job opportunities</li>
+                    <li>Training & career development programs</li>
+                    <li>Interview prep & resume support</li>
+                </ul>
+                <span class="cta-button">Explore Job Seeker Services →</span>
+            </div>
+            <div class="audience-card org-card" onclick="showPage('organizations')">
+                <div class="service-icon">🏢</div>
+                <h2>For Organizations</h2>
+                <p>Corporates and hiring teams — access pre-vetted IT, security, and audit talent on demand.</p>
+                <ul>
+                    <li>Staff augmentation & contract hiring</li>
+                    <li>Permanent & project-based recruitment</li>
+                    <li>Corporate training for your teams</li>
+                    <li>End-to-end hiring support</li>
+                </ul>
+                <span class="cta-button">Explore Organization Services →</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICES PAGE -->
+    <div id="services" class="page-content">
+        <div class="page-header">
+            <h1>Training Services</h1>
+            <p>Expert-led one-on-one programs in IT security, auditing, and career development</p>
+        </div>
+        <section class="services">
+            <h2 class="section-title">Training & Development</h2>
+            <p class="section-subtitle">Expert-led one-on-one programs in IT security, auditing, and career development</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>IT Security Training</h3>
+                    <p>Comprehensive one-on-one training in IT security fundamentals, best practices, and advanced security concepts.</p>
+                    <a onclick="showService('it-security')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Master cybersecurity principles, threat detection, incident response, and protection strategies.</p>
+                    <a onclick="showService('cybersecurity')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>IT Auditing</h3>
+                    <p>Learn IT audit methodologies, compliance frameworks, risk assessment, and control evaluation.</p>
+                    <a onclick="showService('it-auditing')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✅</div>
+                    <h3>ISO 27001</h3>
+                    <p>Get certified in ISO 27001 information security management systems with expert guidance.</p>
+                    <a onclick="showService('iso-27001')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>Resume Writing</h3>
+                    <p>Professional resume writing services that highlight your skills and experience.</p>
+                    <a onclick="showService('resume-writing')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>LinkedIn Profiling</h3>
+                    <p>Optimize your LinkedIn profile to attract recruiters and build your professional brand.</p>
+                    <a onclick="showService('linkedin-profiling')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Interview Preparation</h3>
+                    <p>Mock interviews, technical question practice, and personalized feedback.</p>
+                    <a onclick="showService('interview-prep')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Corporate Training</h3>
+                    <p>Customized corporate training programs for teams and organizations.</p>
+                    <a onclick="showService('corporate-training')" class="service-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="portfolio-divider">
+                <h2>Staff Augmentation & Recruitment</h2>
+                <p>Explore our <a onclick="showPage('job-seekers')" class="service-link" style="margin-top:0">Job Seeker</a> and <a onclick="showPage('organizations')" class="service-link" style="margin-top:0">Organization</a> hubs for placement and hiring services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Corporate Staff Augmentation</h3>
+                    <p>Help your organization hire skilled IT, security, and audit professionals — contract, project-based, or full-time.</p>
+                    <a onclick="showService('corporate-staff-augmentation')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Student Talent Pool</h3>
+                    <p>Students and fresh graduates can register their skills and profile to join our talent database for employer matching.</p>
+                    <a onclick="showService('student-talent-pool')" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>Recruitment & Placement</h3>
+                    <p>We match vetted candidates with corporate opportunities and support the full hiring journey for employers and job seekers.</p>
+                    <a onclick="showService('recruitment-placement')" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SERVICE DETAIL PAGE (dynamic) -->
+    <div id="service-detail" class="page-content">
+        <div class="page-header">
+            <h1 id="serviceTitle">Service</h1>
+            <p id="serviceSubtitle"></p>
+        </div>
+        <div class="content-section">
+            <div class="service-detail">
+                <h2>About This Service</h2>
+                <p id="serviceAbout"></p>
+                <h2 style="margin-top: 2rem;" id="serviceLearnTitle">What You'll Learn</h2>
+                <ul id="serviceLearn"></ul>
+                <h2 style="margin-top: 2rem;" id="serviceFeaturesTitle">Key Features</h2>
+                <ul id="serviceFeatures"></ul>
+                <div class="enroll-box">
+                    <a id="serviceCta" onclick="showPage('contact')" class="enroll-button">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOR JOB SEEKERS PAGE -->
+    <div id="job-seekers" class="page-content">
+        <div class="page-header">
+            <h1>For Job Seekers</h1>
+            <p>Your career empowered — find opportunities and get placed with the right employer</p>
+        </div>
+        <div class="content-section">
+            <div class="service-detail">
+                <h2>Build Your IT Career with Secure Sage</h2>
+                <p>Whether you're a student, fresher, or experienced professional, we help you get discovered by hiring companies. Register your profile, upload your CV, and access training programs that make you job-ready.</p>
+            </div>
+
+            <div class="hub-actions">
+                <div class="hub-action-card" onclick="showPage('student-register')">
+                    <div class="hub-icon">📤</div>
+                    <h4>Upload Resume</h4>
+                    <p>Register & submit your CV to join our talent pool</p>
+                </div>
+                <div class="hub-action-card" onclick="document.getElementById('job-seekers-opportunities').scrollIntoView({behavior:'smooth'})">
+                    <div class="hub-icon">🔍</div>
+                    <h4>Browse Opportunities</h4>
+                    <p>Explore open roles from corporate partners</p>
+                </div>
+                <div class="hub-action-card" onclick="showPage('services')">
+                    <div class="hub-icon">📚</div>
+                    <h4>Training Programs</h4>
+                    <p>IT Security, Cybersecurity, ISO 27001 & more</p>
+                </div>
+                <div class="hub-action-card" onclick="showService('resume-writing')">
+                    <div class="hub-icon">📄</div>
+                    <h4>Resume Writing</h4>
+                    <p>Professional CV support for IT roles</p>
+                </div>
+                <div class="hub-action-card" onclick="showService('linkedin-profiling')">
+                    <div class="hub-icon">💼</div>
+                    <h4>LinkedIn Profiling</h4>
+                    <p>Optimize your profile for recruiters</p>
+                </div>
+                <div class="hub-action-card" onclick="showService('interview-prep')">
+                    <div class="hub-icon">🎯</div>
+                    <h4>Interview Preparation</h4>
+                    <p>Mock interviews & personalized feedback</p>
+                </div>
+            </div>
+
+            <div class="service-detail" id="job-seekers-opportunities">
+                <h2>Current Opportunities</h2>
+                <p>Open roles from our corporate partners. Register and upload your CV to apply.</p>
+                <div class="opportunities-grid">
+                    <div class="opportunity-card">
+                        <h4>IT Security Analyst</h4>
+                        <span class="opportunity-tag">Full-time</span>
+                        <span class="opportunity-tag">Fresher – 2 yrs</span>
+                        <p style="margin-top: 0.75rem; color: #666;">Security operations, incident monitoring, and compliance support.</p>
+                    </div>
+                    <div class="opportunity-card">
+                        <h4>Cybersecurity Consultant</h4>
+                        <span class="opportunity-tag">Contract</span>
+                        <span class="opportunity-tag">3+ yrs</span>
+                        <p style="margin-top: 0.75rem; color: #666;">VAPT, risk assessments, and security advisory.</p>
+                    </div>
+                    <div class="opportunity-card">
+                        <h4>ISO 27001 Lead Implementer</h4>
+                        <span class="opportunity-tag">Full-time</span>
+                        <span class="opportunity-tag">2+ yrs</span>
+                        <p style="margin-top: 0.75rem; color: #666;">ISMS implementation and audit readiness.</p>
+                    </div>
+                    <div class="opportunity-card">
+                        <h4>IT Audit Associate</h4>
+                        <span class="opportunity-tag">Full-time</span>
+                        <span class="opportunity-tag">0 – 1 yr</span>
+                        <p style="margin-top: 0.75rem; color: #666;">ITGC testing, control evaluation, and audit support.</p>
+                    </div>
+                </div>
+                <div class="dual-cta" style="margin-top: 2rem;">
+                    <a onclick="showPage('student-register')" class="enroll-button">Upload Resume & Register</a>
+                    <a onclick="showService('student-talent-pool')" class="enroll-button" style="background: transparent; border: 2px solid #e8dcc4; color: #e8dcc4;">Learn About Talent Pool</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOR ORGANIZATIONS PAGE -->
+    <div id="organizations" class="page-content">
+        <div class="page-header">
+            <h1>For Organizations</h1>
+            <p>Talent that drives growth — hire the right IT professionals, faster</p>
+        </div>
+        <div class="content-section">
+            <div class="service-detail">
+                <h2>Workforce Solutions for Corporates</h2>
+                <p>From fast-growing startups to established enterprises, we help organizations hire skilled IT, security, and audit professionals — on contract, project-based, or full-time. Access our curated talent pool of trained and job-ready candidates.</p>
+            </div>
+
+            <div class="hub-actions">
+                <div class="hub-action-card" onclick="showService('corporate-staff-augmentation')">
+                    <div class="hub-icon">🤝</div>
+                    <h4>Staff Augmentation</h4>
+                    <p>On-demand IT & security professionals</p>
+                </div>
+                <div class="hub-action-card" onclick="showService('recruitment-placement')">
+                    <div class="hub-icon">🔗</div>
+                    <h4>Recruitment Services</h4>
+                    <p>Permanent & contract hiring support</p>
+                </div>
+                <div class="hub-action-card" onclick="showService('corporate-training')">
+                    <div class="hub-icon">🏢</div>
+                    <h4>Corporate Training</h4>
+                    <p>Upskill your existing teams</p>
+                </div>
+                <div class="hub-action-card" onclick="showPage('contact')">
+                    <div class="hub-icon">📋</div>
+                    <h4>Share Hiring Requirements</h4>
+                    <p>Tell us what roles you need to fill</p>
+                </div>
+            </div>
+
+            <div class="portfolio-cards" style="padding: 0;">
+                <div class="portfolio-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Corporate Staff Augmentation</h3>
+                    <p style="margin: 1rem 0;">Contract and project-based IT, security, and audit talent deployed to your team.</p>
+                    <a onclick="showService('corporate-staff-augmentation')" class="service-link">Learn More →</a>
+                </div>
+                <div class="portfolio-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>Recruitment & Placement</h3>
+                    <p style="margin: 1rem 0;">Full-cycle hiring — sourcing, screening, interviews, and onboarding support.</p>
+                    <a onclick="showService('recruitment-placement')" class="service-link">Learn More →</a>
+                </div>
+                <div class="portfolio-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Corporate Training</h3>
+                    <p style="margin: 1rem 0;">Custom security, compliance, and IT training programs for your workforce.</p>
+                    <a onclick="showService('corporate-training')" class="service-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="service-detail" style="margin-top: 3rem; text-align: center;">
+                <h2>Ready to Find the Right Talent?</h2>
+                <p style="margin: 1rem 0 1.5rem;">Connect with our team to discuss your hiring needs and discover tailored workforce solutions.</p>
+                <a onclick="showPage('contact')" class="enroll-button">Contact Us to Hire</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- STUDENT REGISTRATION / UPLOAD RESUME PAGE -->
+    <div id="student-register" class="page-content">
+        <div class="page-header">
+            <h1>Upload Resume & Register</h1>
+            <p>Join our talent pool — submit your profile and CV to get matched with opportunities</p>
+        </div>
+        <div class="content-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Why Register?</h3>
+                    <div class="contact-item">
+                        <i>📋</i>
+                        <div>Your profile is reviewed and added to our curated talent database</div>
+                    </div>
+                    <div class="contact-item">
+                        <i>🏢</i>
+                        <div>Get matched with relevant openings from corporate partners</div>
+                    </div>
+                    <div class="contact-item">
+                        <i>🎯</i>
+                        <div>Receive guidance on interviews and role readiness</div>
+                    </div>
+                    <div class="contact-item">
+                        <i>🔒</i>
+                        <div>Your data is shared only with your consent for relevant opportunities</div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Register Your Profile</h3>
+                    <div id="studentFormMessage" class="form-message"></div>
+                    <form id="studentForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="studentName">Full Name *</label>
+                            <input type="text" id="studentName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentEmail">Email *</label>
+                            <input type="email" id="studentEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentPhone">Phone *</label>
+                            <input type="tel" id="studentPhone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentEducation">Highest Qualification *</label>
+                            <input type="text" id="studentEducation" name="education" placeholder="e.g. B.Tech in Computer Science" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentGradYear">Graduation Year</label>
+                            <input type="text" id="studentGradYear" name="graduation_year" placeholder="e.g. 2024">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentSkills">Skills & Technologies *</label>
+                            <textarea id="studentSkills" name="skills" placeholder="e.g. IT Security, Networking, ISO 27001, Python" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentExperience">Experience Level *</label>
+                            <select id="studentExperience" name="experience" required>
+                                <option value="">Select experience</option>
+                                <option>Fresher (No experience)</option>
+                                <option>0 – 1 year</option>
+                                <option>1 – 3 years</option>
+                                <option>3 – 5 years</option>
+                                <option>5+ years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentRoles">Preferred Job Roles *</label>
+                            <input type="text" id="studentRoles" name="preferred_roles" placeholder="e.g. Security Analyst, IT Auditor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentCv">Upload CV / Resume *</label>
+                            <div class="file-upload">
+                                <input type="file" id="studentCv" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+                                <p class="file-hint">Accepted formats: PDF, DOC, DOCX (max 5 MB)</p>
+                                <p id="cvFileName" class="file-hint" style="color: #1e3a52; font-weight: 600;"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentResume">Portfolio / LinkedIn Link (optional)</label>
+                            <input type="url" id="studentResume" name="portfolio_link" placeholder="LinkedIn, GitHub, portfolio URL">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentAbout">About You / Career Goals</label>
+                            <textarea id="studentAbout" name="about" placeholder="Tell us about your background and what you're looking for"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button" id="studentSubmitBtn">Submit Registration</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page-content">
+        <div class="page-header">
+            <h1>About Secure Sage</h1>
+            <p>Your Trusted Partner in IT Career Development</p>
+        </div>
+        <div class="content-section">
+            <div class="service-detail">
+                <h2>Who We Are</h2>
+                <p>Secure Sage is a premier IT training, staff augmentation, and career development organization dedicated to empowering professionals with the knowledge and skills needed to excel in today's rapidly evolving technology landscape — while connecting corporates with job-ready talent.</p>
+                <h2 style="margin-top: 2rem;">Our Mission</h2>
+                <p>To bridge the gap between theoretical knowledge and practical industry requirements by delivering hands-on, expert-led training — and to help employers hire the right candidates while guiding students into meaningful careers.</p>
+                <h2 style="margin-top: 2rem;">What We Offer</h2>
+                <ul>
+                    <li><strong>Training & Development:</strong> IT Security, Cybersecurity, IT Auditing, ISO 27001, and career services</li>
+                    <li><strong>Staff Augmentation:</strong> Contract and full-time IT talent for corporate organizations</li>
+                    <li><strong>Student Talent Pool:</strong> Profile registration and matching with employer opportunities</li>
+                    <li><strong>Recruitment & Placement:</strong> End-to-end hiring support for corporates and job seekers</li>
+                </ul>
+                <h2 style="margin-top: 2rem;">Why Choose Us?</h2>
+                <ul>
+                    <li><strong>Expert Instructors:</strong> Learn from industry professionals with years of real-world experience</li>
+                    <li><strong>Personalized Approach:</strong> One-on-one training tailored to your learning pace and goals</li>
+                    <li><strong>Practical Focus:</strong> Hands-on labs and real-world scenarios</li>
+                    <li><strong>Flexible Learning:</strong> Schedule sessions that fit your availability</li>
+                    <li><strong>Comprehensive Support:</strong> Ongoing mentorship and career guidance</li>
+                </ul>
+                <div style="background: linear-gradient(135deg, #1e3a52 0%, #2c5364 100%); color: white; padding: 2rem; border-radius: 15px; text-align: center; margin-top: 3rem;">
+                    <h2 style="color: #e8dcc4;">Ready to Start Your IT Journey?</h2>
+                    <p style="margin: 1rem 0;">Join hundreds of successful professionals who have transformed their careers with Secure Sage</p>
+                    <a onclick="showPage('contact')" class="enroll-button" style="margin-top: 1rem;">Contact Us Today</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page-content">
+        <div class="page-header">
+            <h1>Contact Us</h1>
+            <p>Get in touch with us for any inquiries</p>
+        </div>
+        <div class="content-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <div>
+                            <strong>Email</strong><br>
+                            secure.sage25@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            +91 7075980213
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <div id="formMessage" class="form-message"></div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceSelect">Service Interested In</label>
+                            <select id="serviceSelect">
+                                <option>General Inquiry</option>
+                                <option>IT Security Training</option>
+                                <option>Cybersecurity</option>
+                                <option>IT Auditing</option>
+                                <option>ISO 27001</option>
+                                <option>Resume Writing</option>
+                                <option>LinkedIn Profiling</option>
+                                <option>Interview Preparation</option>
+                                <option>Corporate Training</option>
+                                <option>Corporate Staff Augmentation</option>
+                                <option>Student Talent Pool Registration</option>
+                                <option>Recruitment & Placement</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY PAGE -->
+    <div id="privacy" class="page-content">
+        <div class="page-header">
+            <h1>Privacy & Cookie Policy</h1>
+            <p>Your privacy is important to us</p>
+        </div>
+        <div class="content-section">
+            <div class="service-detail">
+                <h2>Privacy Policy</h2>
+                <p><strong>Last Updated: January 2024</strong></p>
+                <h2 style="margin-top: 2rem;">1. Information We Collect</h2>
+                <p>We collect information that you provide directly to us, including:</p>
+                <ul>
+                    <li>Name, email address, and phone number</li>
+                    <li>Course enrollment information</li>
+                    <li>Communication preferences</li>
+                    <li>Feedback and correspondence</li>
+                </ul>
+                <h2 style="margin-top: 2rem;">2. How We Use Your Information</h2>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Provide, maintain, and improve our training services</li>
+                    <li>Process your course enrollments</li>
+                    <li>Send you course materials, updates, and administrative information</li>
+                    <li>Respond to your inquiries and provide customer support</li>
+                    <li>Send promotional communications (with your consent)</li>
+                </ul>
+                <h2 style="margin-top: 2rem;">3. Information Sharing</h2>
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>
+                <ul>
+                    <li>With your explicit consent</li>
+                    <li>To comply with legal obligations</li>
+                    <li>To protect our rights and safety</li>
+                    <li>With service providers who assist in our operations (under confidentiality agreements)</li>
+                </ul>
+                <h2 style="margin-top: 2rem;">4. Data Security</h2>
+                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.</p>
+                <h2 style="margin-top: 2rem;">5. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access the personal information we hold about you</li>
+                    <li>Request correction of inaccurate information</li>
+                    <li>Request deletion of your information</li>
+                    <li>Opt-out of marketing communications</li>
+                    <li>Withdraw consent at any time</li>
+                </ul>
+                <h2 style="margin-top: 2rem;">6. Cookie Policy</h2>
+                <p>We use cookies and similar tracking technologies to improve your browsing experience and analyze website traffic.</p>
+                <h3 style="margin-top: 1rem;">Types of Cookies We Use:</h3>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> Required for the website to function properly</li>
+                    <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website</li>
+                    <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+                </ul>
+                <p style="margin-top: 1rem;">You can control cookies through your browser settings. Please note that disabling cookies may affect website functionality.</p>
+                <h2 style="margin-top: 2rem;">7. Third-Party Links</h2>
+                <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to read their privacy policies.</p>
+                <h2 style="margin-top: 2rem;">8. Children's Privacy</h2>
+                <p>Our services are not intended for individuals under 18 years of age. We do not knowingly collect personal information from children.</p>
+                <h2 style="margin-top: 2rem;">9. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page with an updated "Last Updated" date.</p>
+                <h2 style="margin-top: 2rem;">10. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+                <ul>
+                    <li><strong>Email:</strong> secure.sage25@gmail.com</li>
+                </ul>
+                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 5px; margin-top: 2rem;">
+                    <strong>Your Consent:</strong> By using our website and services, you consent to the collection and use of information as described in this Privacy Policy.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/917075980213?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20training%20services"
+       class="whatsapp-float"
+       target="_blank">
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+        💬
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Secure Sage</h3>
+                <p>Start Your IT Journey</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('services')">Training Services</a></li>
+                    <li><a onclick="showPage('job-seekers')">For Job Seekers</a></li>
+                    <li><a onclick="showPage('organizations')">For Organizations</a></li>
+                    <li><a onclick="showPage('student-register')">Upload Resume</a></li>
+                    <li><a onclick="showPage('about')">About</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                    <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📧 secure.sage25@gmail.com</p>
+                <p>📱 +91 7075980213</p>
+            </div>
+        </div>
+        <p class="footer-bottom">
+            &copy; 2024 Secure Sage. All rights reserved. |
+            <a onclick="showPage('privacy')">Privacy Policy</a> |
+            <a onclick="showPage('privacy')">Cookie Policy</a>
+        </p>
+    </footer>
+
+    <script>
+        const CONTACT_EMAIL = 'secure.sage25@gmail.com';
+
+        const servicesData = {
+            'it-security': {
+                title: 'IT Security Training',
+                subtitle: 'Master the fundamentals of IT Security',
+                about: 'Our comprehensive IT Security Training program provides in-depth knowledge of security fundamentals, best practices, and advanced concepts. This one-on-one training is tailored to your learning pace and career goals.',
+                learn: [
+                    'Fundamentals of Information Security (CIA Triad)',
+                    'Network Security Principles and Protocols',
+                    'Cryptography and Encryption Methods',
+                    'Access Control and Authentication',
+                    'Security Policies and Procedures',
+                    'Risk Assessment and Management',
+                    'Incident Response and Disaster Recovery',
+                    'Security Tools and Technologies'
+                ],
+                features: [
+                    'One-on-one personalized training sessions',
+                    'Flexible schedule to fit your availability',
+                    'Hands-on practical exercises and labs',
+                    'Real-world case studies and scenarios',
+                    'Course materials and resources included',
+                    'Certification guidance and exam preparation'
+                ]
+            },
+            'cybersecurity': {
+                title: 'Cybersecurity',
+                subtitle: 'Protect systems and data from modern threats',
+                about: 'Learn to identify, prevent, and respond to cyber threats with practical, expert-led cybersecurity training designed for real-world defense.',
+                learn: [
+                    'Threat landscape and attack vectors',
+                    'Vulnerability assessment and penetration testing basics',
+                    'Security monitoring and SIEM fundamentals',
+                    'Incident response and forensics',
+                    'Malware analysis and prevention',
+                    'Cloud and endpoint security',
+                    'Security awareness and social engineering defense'
+                ],
+                features: [
+                    'One-on-one mentorship from security professionals',
+                    'Hands-on labs with real attack scenarios',
+                    'Industry-aligned curriculum',
+                    'Flexible online sessions',
+                    'Career guidance for security roles'
+                ]
+            },
+            'it-auditing': {
+                title: 'IT Auditing',
+                subtitle: 'Build expertise in IT audit and compliance',
+                about: 'Gain practical skills in IT audit methodologies, compliance frameworks, and control evaluation to excel in audit and governance roles.',
+                learn: [
+                    'IT audit planning and execution',
+                    'Risk-based auditing approaches',
+                    'Control testing and evidence collection',
+                    'Compliance frameworks (SOX, COBIT, etc.)',
+                    'Audit reporting and communication',
+                    'IT general controls and application controls',
+                    'Follow-up and remediation tracking'
+                ],
+                features: [
+                    'Personalized one-on-one coaching',
+                    'Real audit case studies',
+                    'Framework and checklist templates',
+                    'Interview preparation for audit roles',
+                    'Flexible scheduling'
+                ]
+            },
+            'iso-27001': {
+                title: 'ISO 27001',
+                subtitle: 'Implement and audit information security management systems',
+                about: 'Expert guidance on ISO 27001 implementation, internal auditing, and certification readiness for organizations and professionals.',
+                learn: [
+                    'ISO 27001 standard requirements and clauses',
+                    'ISMS scope, policy, and risk treatment',
+                    'Statement of Applicability (SoA)',
+                    'Internal audit planning and execution',
+                    'Management review and continual improvement',
+                    'Certification audit preparation',
+                    'Documentation and evidence management'
+                ],
+                features: [
+                    'Step-by-step ISMS implementation support',
+                    'Audit-ready documentation guidance',
+                    'One-on-one mentoring sessions',
+                    'Practical exercises and templates',
+                    'Certification pathway advice'
+                ]
+            },
+            'resume-writing': {
+                title: 'Resume Writing',
+                subtitle: 'Stand out with a professional, targeted resume',
+                about: 'Professional resume writing tailored to IT and security roles, highlighting your skills, achievements, and career story effectively.',
+                learn: [
+                    'Resume structure and formatting best practices',
+                    'ATS-friendly keyword optimization',
+                    'Achievement-focused bullet writing',
+                    'Tailoring resumes for specific roles',
+                    'Cover letter alignment',
+                    'LinkedIn-resume consistency'
+                ],
+                features: [
+                    'One-on-one consultation',
+                    'Industry-specific templates',
+                    'Multiple revision rounds',
+                    'Fast turnaround',
+                    'Guidance for career transitions'
+                ]
+            },
+            'linkedin-profiling': {
+                title: 'LinkedIn Profiling',
+                subtitle: 'Build a profile that attracts recruiters',
+                about: 'Optimize your LinkedIn presence with a compelling headline, summary, experience, and networking strategy to grow your professional brand.',
+                learn: [
+                    'Profile headline and summary optimization',
+                    'Experience and skills presentation',
+                    'Keyword strategy for recruiter search',
+                    'Recommendations and endorsements',
+                    'Content and engagement basics',
+                    'Networking outreach templates'
+                ],
+                features: [
+                    'Personalized profile review',
+                    'Before-and-after optimization',
+                    'Recruiter visibility tips',
+                    'One-on-one coaching session',
+                    'Ongoing profile tune-up advice'
+                ]
+            },
+            'interview-prep': {
+                title: 'Interview Preparation',
+                subtitle: 'Ace technical and behavioral interviews',
+                about: 'Mock interviews, technical question practice, and personalized feedback to build confidence and performance for IT and security roles.',
+                learn: [
+                    'Behavioral interview frameworks (STAR method)',
+                    'Technical question practice by domain',
+                    'System design and scenario discussions',
+                    'Salary and offer negotiation basics',
+                    'Body language and presentation skills',
+                    'Follow-up and thank-you best practices'
+                ],
+                features: [
+                    'One-on-one mock interviews',
+                    'Recorded feedback sessions',
+                    'Role-specific question banks',
+                    'Flexible scheduling',
+                    'Confidence-building coaching'
+                ]
+            },
+            'corporate-training': {
+                title: 'Corporate Training',
+                subtitle: 'Custom programs for teams and organizations',
+                about: 'Tailored corporate training in security, compliance, and IT skills—designed for your team\'s goals, schedule, and industry requirements.',
+                learn: [
+                    'Needs assessment and curriculum design',
+                    'Security awareness for employees',
+                    'Compliance and policy training',
+                    'Technical upskilling for IT teams',
+                    'Workshop and lab delivery',
+                    'Training effectiveness measurement'
+                ],
+                features: [
+                    'Customized content for your organization',
+                    'Onsite or virtual delivery options',
+                    'Experienced industry trainers',
+                    'Flexible batch scheduling',
+                    'Post-training support and materials'
+                ]
+            },
+            'corporate-staff-augmentation': {
+                title: 'Corporate Staff Augmentation',
+                subtitle: 'Skilled IT talent on demand for your organization',
+                about: 'We help corporate organizations hire pre-vetted IT, security, and audit professionals — on contract, project-based, or full-time. Reduce hiring time and access talent trained through our programs and industry network.',
+                learnTitle: 'How It Works',
+                featuresTitle: 'Benefits for Employers',
+                learn: [
+                    'Share your hiring requirements and role specifications',
+                    'We source candidates from our talent pool and network',
+                    'Screening, skills assessment, and shortlisting',
+                    'Interview coordination and candidate presentation',
+                    'Onboarding support and placement follow-up'
+                ],
+                features: [
+                    'Access to job-ready IT and security professionals',
+                    'Faster time-to-hire with pre-screened candidates',
+                    'Flexible engagement — contract, project, or permanent',
+                    'Domain expertise in security, audit, and compliance',
+                    'Dedicated account support throughout the process'
+                ],
+                ctaText: 'Hire Talent',
+                ctaPage: 'contact'
+            },
+            'student-talent-pool': {
+                title: 'Student Talent Pool',
+                subtitle: 'Register your profile and get discovered by employers',
+                about: 'Students, fresh graduates, and early-career professionals can register with Secure Sage to join our curated talent database. We match your skills and career goals with relevant opportunities from corporate partners.',
+                learnTitle: 'Registration Process',
+                featuresTitle: 'What You Get',
+                learn: [
+                    'Submit your profile, skills, and career preferences',
+                    'Our team reviews and adds you to the talent pool',
+                    'Get matched with relevant job openings',
+                    'Receive interview guidance and placement support',
+                    'Stay informed about new opportunities in your domain'
+                ],
+                features: [
+                    'Free registration for students and job seekers',
+                    'Matching with corporate hiring requirements',
+                    'Career guidance from industry professionals',
+                    'Interview preparation support',
+                    'Your data shared only with your consent'
+                ],
+                ctaText: 'Register Your Profile',
+                ctaPage: 'student-register'
+            },
+            'recruitment-placement': {
+                title: 'Recruitment & Placement',
+                subtitle: 'Connecting the right talent with the right opportunities',
+                about: 'Our recruitment and placement service bridges the gap between employers and candidates. We manage the full hiring lifecycle — from requirement gathering and candidate sourcing to interview support and offer coordination.',
+                learnTitle: 'Our Process',
+                featuresTitle: 'Why It Works',
+                learn: [
+                    'Employers share open roles and hiring criteria',
+                    'Candidates register or are sourced from our talent pool',
+                    'Skills-based matching and shortlisting',
+                    'Interview scheduling and feedback loops',
+                    'Offer negotiation support and onboarding handoff'
+                ],
+                features: [
+                    'Dual focus — corporate hiring and student placement',
+                    'Curated talent pool of trained professionals',
+                    'Role-specific matching for IT and security positions',
+                    'Transparent communication for both parties',
+                    'Ongoing support until successful placement'
+                ],
+                ctaText: 'Get Started',
+                ctaPage: 'contact'
+            }
+        };
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function showPage(pageName) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            const page = document.getElementById(pageName);
+            if (page) {
+                page.classList.add('active');
+            }
+            document.getElementById('navLinks').classList.remove('active');
+            updateAudienceTab(pageName);
+            window.scrollTo(0, 0);
+        }
+
+        function updateAudienceTab(pageName) {
+            const tabJob = document.getElementById('tab-job-seekers');
+            const tabOrg = document.getElementById('tab-organizations');
+            tabJob.classList.remove('active');
+            tabOrg.classList.remove('active');
+            if (pageName === 'job-seekers' || pageName === 'student-register') {
+                tabJob.classList.add('active');
+            } else if (pageName === 'organizations') {
+                tabOrg.classList.add('active');
+            }
+        }
+
+        function showService(serviceId) {
+            const data = servicesData[serviceId];
+            if (!data) return;
+
+            document.getElementById('serviceTitle').textContent = data.title;
+            document.getElementById('serviceSubtitle').textContent = data.subtitle;
+            document.getElementById('serviceAbout').textContent = data.about;
+            document.getElementById('serviceLearnTitle').textContent = data.learnTitle || "What You'll Learn";
+            document.getElementById('serviceFeaturesTitle').textContent = data.featuresTitle || 'Key Features';
+
+            const learnList = document.getElementById('serviceLearn');
+            learnList.innerHTML = '';
+            data.learn.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                learnList.appendChild(li);
+            });
+
+            const featuresList = document.getElementById('serviceFeatures');
+            featuresList.innerHTML = '';
+            data.features.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = '✓ ' + item;
+                featuresList.appendChild(li);
+            });
+
+            const cta = document.getElementById('serviceCta');
+            cta.textContent = data.ctaText || 'Enroll Now';
+            cta.onclick = function() { showPage(data.ctaPage || 'contact'); };
+
+            showPage('service-detail');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'Not provided';
+            const service = document.getElementById('serviceSelect').value;
+            const message = document.getElementById('message').value;
+
+            const subject = encodeURIComponent(`Contact Form: ${service} - ${name}`);
+            const body = encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}`
+            );
+
+            window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+            document.getElementById('formMessage').textContent = 'Email client opened. Please send the email to complete your inquiry.';
+            document.getElementById('formMessage').className = 'form-message success';
+
+            setTimeout(() => {
+                this.reset();
+                setTimeout(() => {
+                    document.getElementById('formMessage').className = 'form-message';
+                }, 5000);
+            }, 1000);
+        });
+
+        document.getElementById('studentCv').addEventListener('change', function() {
+            const file = this.files[0];
+            document.getElementById('cvFileName').textContent = file ? `Selected: ${file.name}` : '';
+        });
+
+        document.getElementById('studentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const msg = document.getElementById('studentFormMessage');
+            const btn = document.getElementById('studentSubmitBtn');
+            const cvFile = document.getElementById('studentCv').files[0];
+
+            if (!cvFile) {
+                msg.textContent = 'Please upload your CV (PDF or Word).';
+                msg.className = 'form-message error';
+                return;
+            }
+
+            if (cvFile.size > 5 * 1024 * 1024) {
+                msg.textContent = 'CV file must be under 5 MB.';
+                msg.className = 'form-message error';
+                return;
+            }
+
+            const ext = cvFile.name.split('.').pop().toLowerCase();
+            if (!['pdf', 'doc', 'docx'].includes(ext)) {
+                msg.textContent = 'Please upload a PDF, DOC, or DOCX file.';
+                msg.className = 'form-message error';
+                return;
+            }
+
+            const name = document.getElementById('studentName').value;
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', document.getElementById('studentEmail').value);
+            formData.append('phone', document.getElementById('studentPhone').value);
+            formData.append('education', document.getElementById('studentEducation').value);
+            formData.append('graduation_year', document.getElementById('studentGradYear').value || 'Not provided');
+            formData.append('skills', document.getElementById('studentSkills').value);
+            formData.append('experience', document.getElementById('studentExperience').value);
+            formData.append('preferred_roles', document.getElementById('studentRoles').value);
+            formData.append('portfolio_link', document.getElementById('studentResume').value || 'Not provided');
+            formData.append('about', document.getElementById('studentAbout').value || 'Not provided');
+            formData.append('cv', cvFile);
+            formData.append('_subject', `Student Talent Registration - ${name}`);
+            formData.append('_captcha', 'false');
+            formData.append('_template', 'table');
+
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+            msg.className = 'form-message';
+
+            try {
+                const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    msg.textContent = 'Registration submitted successfully! Your details and CV have been sent. We will review your profile and get in touch soon.';
+                    msg.className = 'form-message success';
+                    this.reset();
+                    document.getElementById('cvFileName').textContent = '';
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+            } catch (err) {
+                msg.textContent = 'Unable to submit right now. Please email secure.sage25@gmail.com directly with your CV attached.';
+                msg.className = 'form-message error';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Submit Registration';
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'linear-gradient(135deg, #1a2f42 0%, #243f50 100%)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3a52 0%, #2c5364 100%)';
+            }
+        });
+    </script>
+</body>
+</html>
